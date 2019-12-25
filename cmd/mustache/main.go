@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 
-	"github.com/cbroglie/mustache"
+	"github.com/cuttlecafe/mustache"
 )
 
 var rootCmd = &cobra.Command{

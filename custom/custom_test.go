@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/cbroglie/mustache"
+	"github.com/cuttlecafe/mustache"
 )
 
 func TestCustomDelimiter(t *testing.T) {
