@@ -18,6 +18,10 @@ var (
 	// is true (the default), an empty string is emitted. If it is false, an error
 	// is generated instead.
 	AllowMissingVariables = true
+	// TagStart is start delimiter.
+	TagStart = "{{"
+	// TagEnd is end delimiter.
+	TagEnd = "}}"
 )
 
 // A TagType represents the specific type of mustache tag that a Tag
@@ -733,7 +737,7 @@ func ParseStringPartials(data string, partials PartialProvider) (*Template, erro
 // to efficiently render the template multiple times with different data
 // sources.
 func ParseStringPartialsRaw(data string, partials PartialProvider, forceRaw bool) (*Template, error) {
-	tmpl := Template{data, "{{", "}}", 0, 1, []interface{}{}, forceRaw, partials}
+	tmpl := Template{data, TagStart, TagEnd, 0, 1, []interface{}{}, forceRaw, partials}
 	err := tmpl.parse()
 
 	if err != nil {
@@ -773,7 +777,7 @@ func ParseFilePartialsRaw(filename string, forceRaw bool, partials PartialProvid
 		return nil, err
 	}
 
-	tmpl := Template{string(data), "{{", "}}", 0, 1, []interface{}{}, forceRaw, partials}
+	tmpl := Template{string(data), TagStart, TagEnd, 0, 1, []interface{}{}, forceRaw, partials}
 	err = tmpl.parse()
 
 	if err != nil {
